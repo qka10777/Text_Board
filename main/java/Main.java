@@ -1,12 +1,8 @@
-import com.sun.management.DiagnosticCommandMBean;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Stack;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
@@ -15,7 +11,6 @@ public class Main {
     public static void main(String[] args) {
 
         int lastArticleId = 1;
-        int lastCommentId = 1;
 
         while (true) {
             System.out.println("명령어 : ");
@@ -98,10 +93,12 @@ public class Main {
                         System.out.printf("내용 : %s \n", article.getContent());
                         System.out.printf("조회수 : %d \n", article.getHit());
                         System.out.printf("날짜 : %s \n", article.getRegDate());
-                        if (article.getComments() != null) {
+                        if (article.getComment() != null) {
                             System.out.println("-----------댓글------------");
-                            System.out.printf("댓글 : %s \n", article.getComments());
-                            System.out.println("=======================");
+                            for(int x = 0; x < article.getComments().size(); x++) {
+                                System.out.printf("댓글 : %s \n", article.getComments().get(x));
+                                System.out.println("=======================");
+                            }
                         } else {
                             System.out.println("등록된 댓글이 없습니다.");
                         }
@@ -113,9 +110,9 @@ public class Main {
                             System.out.println("1. 댓글 등록");
                             scan.nextLine();
                             System.out.println("입력 : ");
-                            String comments = scan.nextLine();
-                            article.addComments(comments);
-                            lastCommentId++;
+                            String comment = scan.nextLine();
+                            article.setComment(comment);
+                            article.addComments(comment);
 
 
 

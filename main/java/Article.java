@@ -1,18 +1,13 @@
-public class Article  {
+import java.util.ArrayList;
+
+public class Article {
     private int id;
     private String title;
     private String content;
     private String regDate;
     private int hit;
-
-
-
-    //    private String comment;
-    private String comments;
-
-
-
-
+    private String comment;
+    private ArrayList<String> comments = new ArrayList<String>();
 
     public Article(int id, String title, String content, String regDate) {
         this.id = id;
@@ -22,7 +17,6 @@ public class Article  {
         this.hit = 0;
 
     }
-
 
 
     public int getId() {
@@ -69,20 +63,19 @@ public class Article  {
         this.hit++;
     }
 
-//    public String getComment() {
-//        return comment;
-//    }
-//
-//    public void setComment(String comment) {
-//        this.comment = comment;
-//    }
-public void addComments(String comments) {
-    this.comments = comments;
-}
+    public String getComment() {
+        return comment;
+    }
 
-    public String getComments() {
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public ArrayList<String> getComments() {
         return comments;
     }
 
-
+    public void addComments(String comment) {
+        comments.add(comment);
+    }
 }
